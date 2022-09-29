@@ -1,0 +1,127 @@
+@mixin base ($color, $widht, $height){
+    background-color: $color;
+    width: $widht;
+    height: $height;
+}
+@mixin social-media-follows ($size: 20px, $color: white){
+    color: $color;
+    font-family: sans-serif;
+    font-size: $size;
+    letter-spacing: 2px;
+}
+
+* {
+    transition: all 2s;
+}
+
+:root{
+    --bg-card-color-black: #555;
+    --bg-card-color-white: #fff;
+}
+
+html, 
+body{
+    width: 100%;
+    height: 100%;
+}
+
+body{
+    margin: 0;
+}
+
+.fondo{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    & .card {
+        @include base (var(--bg-card-color-black), 350px, 600px);
+        box-sizing: border-box;
+        border-radius: 15px;
+        padding: 30px 0;
+        display: flex;
+        flex-direction: column;
+        justify-content:space-around;
+        align-items: center;
+        box-shadow: 5px 5px 10px #444;
+        & .photo{
+            @include base (white, 150px, 150px);
+            background-image: url("img/profile-photo.png");
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            border-radius: 10px;
+            & .conection-status{
+                @include base (#6de020, 13px, 13px);
+                z-index: 1;
+                position: relative;
+                left: 95%;
+                bottom: 2%;
+                border-radius: 50%;
+                border: 2px solid gray;
+            }
+        }
+        & .nombre{
+            display: block;
+            text-align: center;
+            place-items: center;
+            background-color: transparent;
+            margin-bottom: 5px;
+            @include social-media-follows();
+        }
+        & .email{
+            display: block;
+            background-color: transparent;
+            @include social-media-follows(16px);
+        }
+        & .button-follow{
+            @include base (#0866d1, 175px, 50px);
+            box-sizing: border-box;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            border-radius: 10px;
+            border-color: transparent;
+            @include social-media-follows(12px);
+                letter-spacing: 1px;
+                letter-spacing: 1px;
+            & i{
+                font-family: 'Open Sans', sans-serif;
+                color: aliceblue;
+            }
+        }
+        & .follows{
+            width: 250px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            text-align: center;
+            & .followers{
+                // border: 2px solid red;
+                width: 75px;
+                height: 50px;
+                & .followers-number{
+                    @include social-media-follows(25px);
+                }
+                & .followers-text{
+                    @include social-media-follows(12px, #aaa);
+                }
+            }
+            & .followings{
+                width: 75px;
+                height: 50px;
+                // border: 2px solid red;
+                & .followings-number{
+                    @include social-media-follows(25px);
+                }
+                & .followings-text{
+                    @include social-media-follows(12px, #aaa);
+                }
+            }
+        }
+    }
+
+}
+
+
